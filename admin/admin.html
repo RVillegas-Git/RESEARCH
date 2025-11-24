@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard | SAMS</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <div class="top-bar">
+    <div class="hamburger"><div></div><div></div><div></div></div>
+    <div class="welcome">Welcome Admin ‒ SAMS</div>
+    <div class="user-controls">
+      <!-- <div class="icon" title="Notifications">🔔</div> -->
+      <!-- <div class="icon" title="Chatbot Access">🤖</div> -->
+      <button class="logout-btn">Logout</button>
+    </div>
+  </div>
+  <div class="main-layout">
+    <div class="sidebar">
+      <div class="menu-items">
+        <!-- <div class="menu-item active" data-section="dashboard">Dashboard Overview</div> -->
+        <div class="menu-item" data-section="users">Manage User Accounts</div>
+        <div class="menu-item" data-section="programs">Manage Schools & Programs</div>
+        <div class="menu-item" data-section="ratings">Manage Performance</div>
+        <div class="menu-item" data-section="awards">View Rankings & Awards</div>
+        <div class="menu-item" data-section="chatbot">Oversee Chatbot</div>
+      </div>
+    </div>
+
+    <div class="content">
+      <!-- Dashboard Section -->
+      <div id="dashboard" class="section active">
+        <h2>Welcome Admin!</h2>
+        <p>Manage your system and keep track of important updates here.</p>
+      </div>
+
+      <!-- Users Section -->
+      <div id="users" class="section">
+        <h2>Manage User Accounts</h2>
+        <input type="text" id="user-search" placeholder="Search users..." />
+        <table id="user-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>School</th>
+              <th>Course</th>
+              <th>School Year</th>
+              <th>Username</th>
+              <th>Created At</th>
+              <th>Status</th> <!-- New column -->
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <!-- Programs Section -->
+      <div id="programs" class="section">
+        <h2>Manage Schools, Colleges, and Programs</h2>
+        <form id="program-form">
+          <input type="text" id="school-name" placeholder="School/College Name" required>
+          <input type="text" id="program-name" placeholder="Program Name" required>
+          <input type="number" id="program-years" placeholder="Years (e.g. 4)" min="1" required>
+          <button type="submit">Add Program</button>
+        </form>
+
+        <label for="school-filter">Filter by School/College:</label>
+        <select id="school-filter">
+          <option value="">All</option>
+        </select>
+
+        <table id="program-table">
+          <thead>
+            <tr>
+              <th>School/College</th>
+              <th>Program</th>
+              <th>Years</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+
+        <div class="filter-section">
+          <h3>View Users by Program</h3>
+          <div>
+            <label for="filter-school">Select School:</label>
+            <select id="filter-school">
+              <option value="">-- Select School --</option>
+            </select>
+            
+            <label for="filter-program">Select Program:</label>
+            <select id="filter-program" disabled>
+              <option value="">-- Select Program --</option>
+            </select>
+          </div>
+          
+          <button id="filter-button" disabled>Show Users</button>
+          <button id="clear-filter">Clear</button>
+          
+          <div id="filter-results">
+            <h4>Users in <span id="selected-program-name"></span></h4>
+            <table id="filtered-users-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Username</th>
+                  <th>School</th>
+                  <th>Program</th>
+                  <th>Year</th>
+                  <th>Joined</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ratings Section (Single Instance) -->
+      <div id="ratings" class="section">
+        <h2>Manage Performance Ratings</h2>
+        
+        <div class="form-management-container">
+          <!-- Form Selection Row -->
+          <div class="form-selection-row">
+            <div class="form-selector">
+              <label for="form-category">Select Form Type:</label>
+              <select id="form-category">
+                <option value="">-- Select a Category --</option>
+              </select>
+              <button id="load-form-btn" class="btn-primary">Load Form</button>
+            </div>
+          </div>
+          
+          <!-- Main Content Area -->
+          <div class="form-management-content">
+            <!-- Form Preview Panel -->
+            <div class="form-preview-panel">
+              <div class="panel-header">
+                <h3 id="current-form-title">Form Preview</h3>
+              </div>
+              <div id="form-preview" class="preview-content"></div>
+            </div>
+            
+            <!-- Form Editor Panel -->
+            <div class="form-editor-panel">
+              <div class="panel-header">
+                <h3>Form Editor</h3>
+                <div class="editor-actions">
+                  <button id="add-field-btn" class="btn-secondary">+ Add Field</button>
+                  <button id="save-form-btn" class="btn-primary">Save Changes</button>
+                </div>
+              </div>
+              <div id="form-builder" class="editor-content"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Awards Section -->
+      <div id="awards" class="section">
+        <h2>View Student Rankings & Awards</h2>
+      <table id="awards-table">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Name</th>
+            <th>Program</th>
+            <th>School</th>
+            <th>Year</th>
+            <th>Date</th>
+            <th>Points</th>
+            <th>Medal</th>
+            <th>Activities</th>  <!-- New column -->
+          </tr>
+        </thead>
+        <tbody>
+          <!-- rows generated by JS -->
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    <div id="edit-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h3>Edit User</h3>
+        <input type="hidden" id="edit-user-id" />
+        <div class="form-group">
+          <label>Name:</label>
+          <input type="text" id="edit-name" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label>School:</label>
+          <input type="text" id="edit-school" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label>Course:</label>
+          <input type="text" id="edit-course" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label>School Year:</label>
+          <input type="text" id="edit-schoolYear" class="form-control" />
+        </div>
+        <div class="modal-actions">
+          <button id="save-edit-btn" class="btn-primary">Save Changes</button>
+          <button id="cancel-edit-btn" class="btn-secondary">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    
+    <script src="admin.js"></script>
+  </div>
+</body>
+</html>

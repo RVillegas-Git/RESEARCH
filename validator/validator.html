@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="validator.css" />
+</head>
+<body>
+
+<header>
+  <div class="hamburger"><div class="menu-icon">&#9776;</div></div>
+  <div class="welcome-user">Welcome Validator!</div>
+  <div class="user-icons">
+    <!-- <div class="icon settings-icon" id="notificationIcon" title="Notifications">🔔</div> -->
+    <div class="icon ai-icon" id="chatbotIcon" title="Chatbot">🤖</div>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
+</header>
+
+<!-- ✅ Add this block below header -->
+<div id="notification-list" class="notifications" style="display: none;"></div>
+
+<div class="container">
+  <div class="sidebar" id="sidebar"></div>
+
+  <div class="main">
+    <h2 id="formTypeHeader"></h2>
+    <div class="top-buttons"></div>
+
+    <div class="submission-details">
+      <label>Name:</label>
+      <input type="text" id="name" readonly>
+      <label>School/Department:</label>
+      <input type="text" id="department" readonly>
+      <label>Course and Year:</label>
+      <input type="text" id="course" readonly>
+      <label>School Year:</label>
+      <input type="text" id="year" readonly>
+    </div>
+    <p>Total Score/Points Earned: <span id="score">0</span></p>
+    <div id="activityList"></div>
+  </div>
+</div>
+
+
+<div id="clarifyModal" class="modal">
+  <div class="modal-content">
+    <label for="clarifyMessage" style="margin-bottom:8px;">Please describe what you need clarified.</label>
+    <textarea id="clarifyMessage" placeholder="Add your comments here..."></textarea>
+    <div class="modal-buttons">
+      <button class="clarify-send" onclick="sendClarification()">Send Clarification Request</button>
+      <button class="cancel" onclick="closeClarifyModal()">Cancel</button>
+    </div>
+    <span class="close" onclick="closeClarifyModal()">&times;</span>
+  </div>
+</div>
+
+<!-- Notification Dropdown -->
+<div id="notificationDropdown" class="dropdown hidden"></div>
+
+
+<script src="validator.js"></script>
+
+</body>
+</html>

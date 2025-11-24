@@ -1,0 +1,285 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+
+    background-image:
+    url("Student Affairs Merit System.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.system-title {
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffffff;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    letter-spacing: 1px;
+}
+
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    padding: 50px;
+    margin-left: 30%;
+    background: rgba(233, 162, 233, 0.75); /* your pink + transparency */
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    position: absolute;
+    height: 600px;
+}
+
+
+
+
+/* Tab Header */
+.tab-header {
+    display: flex;
+    border-bottom: 1px solid #e9ecef;
+    margin-bottom: 32px;
+}
+
+.tab-btn {
+    flex: 1;
+    text-align: center;
+    padding: 16px 0;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative;
+    color: #495057;
+    transition: 0.2s ease;
+    font-weight: 500;
+}
+
+.tab-btn:hover {
+    background-color: #9b59b6;
+}
+
+.tab-btn.active {
+    color: #f1f3f5;
+    font-weight: 600;
+    background-color: #e74c85;
+    border-radius: 6px 6px 0 0;
+}
+
+.tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #9b59b6;
+}
+
+/* Form Wrapper */
+.wrapper {
+    width: 100%;
+}
+
+/* Shared Form Styles */
+form {
+    display: none;
+    transition: all 0.3s ease;
+}
+
+form.active {
+    display: block;
+}
+
+.logo {
+    display: block;
+    margin: 0 auto 28px;
+    max-width: 80px;
+}
+
+/* Input Box Styling */
+.input-box {
+    margin-bottom: 24px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #343a40;
+    font-weight: 500;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    font-size: 15px;
+    color: #212529;
+    background-color: #fff;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #1a73e8;
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.1);
+}
+
+input, select, .submit-btn, .btn {
+    transition: all 0.2s ease-in-out;
+}
+
+.required {
+    color: #dc3545;
+    margin-left: 4px;
+}
+
+
+/* Button Styling */
+.btn,
+.submit-btn {
+    width: 100%;
+    padding: 14px;
+    background-color: #e74c85;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    margin-top: 25px;
+}
+
+.btn:hover,
+.submit-btn:hover {
+    background-color: #9b59b6;
+}
+
+.btn:active,
+.submit-btn:active {
+    transform: translateY(1px);
+}
+
+/* Register / Login Link */
+.register-link {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 24px;
+    color: #6c757d;
+}
+
+.register-link a {
+    color: linear-gradient(to right, #e94e77, #c471ed);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+/* Form Row */
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.form-group.half {
+    flex: 1 1 45%;
+}
+    
+/* Responsive Design */
+@media (max-width: 480px) {
+    .container {
+        padding: 24px;
+        border-radius: 8px;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 16px;
+    }
+}
+
+/* Chatbot */
+.chatbot-container {
+    position:absolute;
+    left: -520px;
+    top: 0;
+    height: 100%;
+    width: 450px;
+    background-color: #f5f5f5;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    z-index: 10;
+}
+
+.chatbot-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Chatbot Responsiveness */
+@media (max-width: 992px) {
+    .chatbot-container {
+        position: static;
+        width: 100%;
+        height: 300px;
+        margin-top: 20px;
+        border-radius: 8px;
+    }
+}
+
+/* Split Container */
+.split-container {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+
+.left-panel, .right-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.left-panel h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.right-panel h2 {
+    margin-bottom: 20px;
+}
+
+#typing-text {
+  font-size: 30px;                 
+  color: #2c3e50;                 
+  margin-bottom: 2px;
+  font-weight: bold;
+  
+}
+
+.page-title {
+  text-align: center;
+  margin-bottom: 40%;
+}

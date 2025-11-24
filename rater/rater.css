@@ -1,0 +1,681 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #d65d82;
+    color: white;
+    padding: 10px 20px;
+    height: 50px;
+}
+
+.top-bar {
+    background: linear-gradient(to right, #e74c85, #9b59b6);
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hamburger {
+    width: 30px;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.hamburger div {
+    height: 3px;
+    background-color: white;
+    width: 100%;
+}
+
+.hamburger {
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.hamburger:hover {
+    transform: scale(1.1);
+}
+
+.welcome-user {
+    font-size: 18px;
+}
+
+.welcome {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.subtext {
+    font-size: 14px;
+    font-weight: normal;
+    margin-left: 8px;
+}
+
+.user-controls {
+    display: flex;
+    gap: 15px;
+}
+
+.icons {
+    display: flex;
+    gap: 10px;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.icon:hover {
+    color: #241758;
+}
+
+/* Layout */
+.container {
+    display: flex;
+    height: calc(100vh - 50px);
+}
+
+/* Sidebar */
+.sidebar {
+    width: 210px;
+    background-color: #444a6e;
+    color: white;
+}
+
+.nav-item {
+    padding: 15px;
+    cursor: pointer;
+    border-bottom: 1px solid #52588a;
+    display: flex;
+    justify-content: space-between;
+    transition: background-color 0.3s ease;
+}
+
+.nav-item:hover {
+    background-color: #e06c8f;
+}
+
+.arrow {
+    margin-left: 5px;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+/* Navigation Tabs */
+.nav-tabs {
+    display: flex;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.tab-item {
+    padding: 10px 20px;
+    background-color: #444a6e;
+    color: white;
+    margin-right: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.tab-item:hover {
+    background-color: #d65d82;
+    transform: translateY(-2px);
+}
+
+/* Student Information Section */
+.student-info {
+    background-color: #d5d2d3;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.form-content {
+    padding: 15px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Category Tabs */
+.category-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    gap: 5px;
+}
+
+.category {
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    color: white;
+    text-align: center;
+    flex: 1;
+    min-width: 120px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-color: #6a6e9e;
+    transition: background-color 0.3s ease;
+}
+
+.category:hover {
+    background-color: #d65d82;
+}
+
+.category.active {
+    background-color: #d65d82;
+    font-weight: bold;
+  }
+  
+/* Activities Section */
+.activities-section {
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+}
+
+.section-header {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.points-info {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.points-earned {
+    color: #d65d82;
+    font-weight: bold;
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    justify-content: flex-end;
+}
+
+.action-btn {
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.action-btn.add {
+    background-color: #81DAE3;
+}
+
+.action-btn.edit {
+    background-color: #3A59D1;
+}
+
+.action-btn.view {
+    background-color: #FF9B17;
+}
+
+.action-btn.delete {
+    background-color: #dc3545;
+}
+
+.action-btn.print {
+    background-color: #6c757d;
+}
+
+/* Table Styles */
+.activities-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.letter th {
+        color: black;              
+        font-size: 16px;            
+        font-weight: bold;          
+        letter-spacing: 1px;       
+        text-transform: lowercase;  
+ }
+      
+
+.activities-table td {
+    border: 1px solid #000000;
+    padding: 8px;
+    text-align: left;
+}
+
+.activities-table th {
+    background-color: #f2f2f2;
+}
+
+.activities-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.activities-table .selection {
+    width: 5%;
+}
+
+.activities-table .number {
+    width: 8%;
+}
+
+.activities-table .activity {
+    width: 35%;
+}
+
+.activities-table .venue {
+    width: 30%;
+}
+
+.activities-table .date {
+    width: 15%;
+}
+
+.activities-table .action {
+    width: 7%;
+}
+
+.edit-row-btn {
+    background-color: #3A59D1;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  position: relative;
+  background: linear-gradient(135deg, #f9ccff, #ffd1e8);
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(186, 85, 211, 0.4);
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  color: #4a004a;
+  animation: modalopen 0.3s ease-out;
+}
+  
+  @keyframes modalopen {
+    from {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .close-modal {
+    color: #b300b3;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .close-modal:hover,
+  .close-modal:focus {
+    color: #ff66b2;
+    text-decoration: none;
+  }
+  
+  .modal .form-header {
+    position: relative;
+    padding-top: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .modal .form-header h2 {
+    color: #8a2be2;
+  }
+  
+  .modal .validation-status {
+    background-color: #ff99cc;
+    padding: 6px 12px;
+    border-radius: 14px;
+    color: white;
+    font-weight: bold;
+  }
+
+  /* Style for the form footer */
+.form-footer {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  /* Gradient Button Style */
+  .gradient-btn {
+    background: linear-gradient(45deg, #6a5acd, #ff1493); /* Violet to Pink Gradient */
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  
+  .gradient-btn:hover {
+    background: linear-gradient(45deg, #ff1493, #6a5acd); /* Reverse gradient on hover */
+    transform: translateY(-3px); /* Slight lift effect on hover */
+  }
+  
+  .gradient-btn:active {
+    background: linear-gradient(45deg, #ff1493, #6a5acd);
+    transform: translateY(1px); /* Button presses down when clicked */
+  }
+  
+  /* Style for the table container */
+.form-table {
+    margin-top: 20px;
+    overflow-x: auto;
+  }
+  
+  /* Style for the table itself */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  /* Style for the table header */
+  th {
+    background-color: #6a5acd; /* Violet color */
+    color: white;
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  /* Style for the table cells */
+  td {
+    padding: 12px 15px;
+    border: 1px solid #ddd; /* Light border for separation */
+    font-size: 14px;
+  }
+  
+  /* Style for inputs inside table cells */
+  td input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  /* Style for the evidence cell with the upload button */
+  .evidence-cell .upload-btn {
+    background-color: #ff1493; /* Pink background */
+    color: white;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+  }
+  
+  .upload-btn:hover {
+    background-color: #ff69b4; /* Lighter pink on hover */
+  }
+  
+  .upload-icon {
+    font-size: 18px;
+  }
+  
+  /* Adjustments for the points input */
+  td input[name="points"] {
+    background-color: #f5f5f5; /* Light grey to indicate it's read-only */
+    text-align: center;
+  }
+  
+  
+/* Notification Styles */
+#notification-list.notifications {
+    position: absolute;
+    top: 60px;
+    right: 30px;
+    background: #fff;
+    color: #333;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    min-width: 300px;
+    z-index: 1000;
+    padding: 16px;
+    display: none;
+}
+
+.notification {
+    border-bottom: 1px solid #eee;
+    padding: 8px 0;
+}
+
+.notif-content {
+    margin-bottom: 4px;
+}
+
+.notif-type {
+    font-weight: bold;
+    color: #e74c85;
+}
+
+.notif-message {
+    margin: 4px 0;
+}
+
+.notif-date {
+    font-size: 12px;
+    color: #888;
+}
+
+.notif-action {
+    margin-top: 6px;
+}
+
+.inline-activity-btn {
+    background: #e74c85;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 4px 10px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.inline-activity-btn:hover {
+    background: #9b59b6;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .form-row {
+        flex-direction: column;
+    }
+
+    .category {
+        flex-basis: 50%;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+    }
+
+    .tab-item {
+        flex: 1 1 100%;
+        justify-content: center;
+    }
+
+    .category {
+        flex-basis: 100%;
+    }
+
+    .action-buttons {
+        justify-content: center;
+    }
+}
+@keyframes bounce {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+  
+  .action-btn:active {
+    animation: bounce 0.3s ease;
+  }
+
+/* Fix table header color and action button layout */
+th {
+  background-color: #f2f2f2;
+  color: black;
+}
+
+.action-cell {
+  white-space: nowrap;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+button.action-btn {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-view { background-color: #3498db; }
+.btn-edit { background-color: #27ae60; }
+.btn-delete { background-color: #e74c3c; }
+.btn-request { background-color: #e67e22; }
+.btn-submit { background-color: #2ecc71; }
+
+
+.delete-notif-btn {
+  background: none;
+  border: none;
+  color: #c00;
+  cursor: pointer;
+  font-size: 0.9em;
+  margin-left: 10px;
+}

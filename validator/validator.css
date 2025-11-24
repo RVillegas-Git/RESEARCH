@@ -1,0 +1,343 @@
+body { font-family: Arial, sans-serif; margin: 0; }
+header {
+  background: linear-gradient(to right, #e74c85, #9b59b6);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  align-items: center;
+}
+.hamburger .menu-icon { font-size: 24px; cursor: pointer; }
+.user-icons { display: flex; gap: 15px; }
+.user-icons .icon { cursor: pointer; }
+.container { display: flex; }
+.sidebar {
+  width: 20%;
+  background-color: #f4f4f4;
+  border-right: 1px solid #ccc;
+  padding: 10px;
+}
+.nav-item, .sidebar-item {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+  background-color: #f4f4f4;
+  transition: background-color 0.3s ease;
+}
+.sidebar-item:hover {
+  background-color: #e0e0e0;
+}
+.sidebar-item.selected {
+  background-color: #d3d3d3;
+  font-weight: bold;
+}
+.main { flex: 1; padding: 20px; }
+.submission-details input {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+.activity-header {
+  display: flex;
+  font-weight: bold;
+  margin-top: 20px;
+  border: 1px solid #ddd;
+  border-bottom: none;
+  background-color: #fafafa;
+}
+.activity-header > div,
+.activity-row > div {
+  flex: 1;
+  padding: 8px 12px;
+  border-right: 1px solid #ddd;
+}
+.activity-header > div:last-child,
+.activity-row > div:last-child {
+  border-right: none;
+}
+.activity-row {
+  display: flex;
+  border: 1px solid #ddd;
+  border-top: none;
+}
+.top-buttons {
+  position: absolute;
+  top: 80px;
+  right: 30px;
+}
+.top-buttons button {
+  padding: 10px 15px;
+  margin-left: 10px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+.top-buttons button:first-child {
+  background-color: #27ae60;
+  color: white;
+}
+.top-buttons button:first-child:hover {
+  background-color: #1e8449;
+}
+.top-buttons button:last-child {
+  background-color: #e74c85;
+  color: white;
+}
+.top-buttons button:last-child:hover {
+  background-color: #c03967;
+}
+#score { font-weight: bold; color: red; }
+
+@media (max-width: 768px) {
+  .container { flex-direction: column; }
+  .sidebar { width: 100%; }
+  .main { padding: 10px; }
+  .top-buttons {
+    position: static;
+    margin-bottom: 20px;
+    text-align: right;
+  }
+}
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-content {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 25px 30px;
+  width: 90%;
+  max-width: 480px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  position: relative;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+.modal-content textarea {
+  width: 100%;
+  height: 110px;
+  border-radius: 8px;
+  padding: 12px;
+  border: 1.5px solid #ccc;
+  font-size: 1rem;
+  resize: vertical;
+  font-family: inherit;
+  transition: border-color 0.3s ease;
+}
+.modal-content textarea:focus {
+  border-color: #e74c85;
+  outline: none;
+}
+.modal-buttons {
+  margin-top: 18px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+.modal-buttons button {
+  padding: 9px 18px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.modal-buttons button:first-child {
+  background-color: #e74c85;
+  color: white;
+}
+.modal-buttons button:first-child:hover {
+  background-color: #c03967;
+}
+.modal-buttons button.cancel {
+  background-color: #555;
+  color: white;
+}
+.modal-buttons button.cancel:hover {
+  background-color: #333;
+}
+.close {
+  position: absolute;
+  top: 15px;
+  right: 18px;
+  font-size: 28px;
+  font-weight: 700;
+  cursor: pointer;
+  color: #999;
+  transition: color 0.3s ease;
+}
+.close:hover {
+  color: #e74c85;
+}
+
+.activity-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Clarify Modal Styles */
+#clarifyModal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.4);
+  justify-content: center;
+  align-items: center;
+}
+
+#clarifyModal .modal-content {
+  background: #fff;
+  padding: 24px 32px 20px 32px;
+  border-radius: 12px;
+  min-width: 320px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  position: relative;
+}
+
+#clarifyModal label {
+  margin-bottom: 8px;
+  font-weight: normal;
+  font-size: 1rem;
+}
+
+#clarifyMessage {
+  width: 100%;
+  min-height: 120px;
+  margin-bottom: 16px;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 16px;
+  border: 1px solid #ccc;
+  resize: vertical;
+  box-sizing: border-box;
+  outline: none;
+}
+
+#clarifyModal .modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+#clarifyModal .clarify-send {
+  background: #e47ca2;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+#clarifyModal .clarify-send:hover {
+  background: #d15b8d;
+}
+
+#clarifyModal .cancel {
+  background: #d15b8d;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+#clarifyModal .cancel:hover {
+  background: #d15b8d;
+}
+
+#clarifyModal .close {
+  position: absolute;
+  top: 10px;
+  right: 18px;
+  font-size: 1.5rem;
+  color: #888;
+  cursor: pointer;
+  font-weight: bold;
+}
+#clarifyModal .close:hover {
+  color: #e74c85;
+}
+#clarifyMessage::placeholder {
+  color: #888;
+  opacity: 1;
+}
+
+#notification-list.notifications {
+  position: absolute;
+  top: 60px;
+  right: 30px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  min-width: 300px;
+  z-index: 1000;
+  padding: 16px;
+  display: none;
+  font-size: 14px;
+}
+
+.notification {
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.notification:last-child {
+  border-bottom: none;
+}
+
+.notif-type {
+  font-weight: bold;
+  color: #555;
+}
+
+.notif-message {
+  margin: 4px 0;
+}
+
+.notif-date {
+  font-size: 0.85em;
+  color: #888;
+}
+
+.notif-action button.inline-activity-btn {
+  margin-top: 6px;
+  padding: 6px 10px;
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.logout-btn {
+  padding: 5px 10px;
+  background-color: #cc0000;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+

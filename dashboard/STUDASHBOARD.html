@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Dashboard</title>
+  <link rel="stylesheet" href="dash.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+</head>
+<body>
+  <div class="top-bar">
+    <div class="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="welcome">
+      Welcome to SAMS! <span class="subtext">(Student Affairs Merit System)</span>
+    </div>
+    <div class="user-controls">
+      <div class="icon" id="notif-btn" title="Notifications">🔔</div>
+      <div class="icon" id="chatbot-btn" title="Chatbot">🤖</div>
+    </div>
+  </div>
+  <div id="notification-list" class="notifications" style="display: none;"></div>
+
+  <div class="sidebar">
+    <div class="menu-items">
+      <div class="menu-item active" data-section="dashboard">Dashboard</div>
+      <div class="menu-item" data-section="rating">Performance Rating</div>
+      <div class="menu-item" data-section="award">Award</div>
+      <div class="menu-item" data-section="confirmation">Rater/ Validator Confirmation</div>
+    </div>
+
+    <div class="logout-container">
+      <button id="edit-account-btn" class="btn">Account Settings</button>
+      <button class="logout-btn">Logout</button>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="main-section" id="dashboard-section">
+      <div class="tabs">
+        <div class="tab active" data-tab="forms" id="forms-tab">Forms</div>
+        <div class="tab" data-tab="rater">Rater</div>
+        <div class="tab" data-tab="validator">Validator</div>
+      </div>
+
+      <!-- FORMS TAB -->
+      <div class="student-info">
+        <h2>Student Information</h2>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" value="" disabled>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="dept">School/ Department:</label>
+            <select id="dept" disabled><option selected>Computer Education</option></select>
+          </div>
+          <div class="form-group">
+            <label for="course">Course and Year:</label>
+            <select id="course" disabled><option selected>BSIT - 3rd Year</option></select>
+          </div>
+          <div class="form-group">
+            <label for="year">School Year:</label>
+            <select id="year" disabled><option selected>2nd Semester SY 2024-2025</option></select>
+          </div>
+        </div>
+      </div>
+
+      <div class="categories">
+        <div class="category" data-key="co-curricular">Co-curricular and <hr>Extracurricular</div>
+        <div class="category" data-key="community">Community Outreach and <hr>Socio Civic</div>
+        <div class="category" data-key="creative">Creative/Original Efforts in Arts<hr> Science & Tech</div>
+        <div class="category" data-key="combined">Combined Curricular/ <hr>Co/Extra-Curricular</div>
+        <div class="category" data-key="marshals">Marshals/ Peer Facilitator <hr>/Peer Tutors</div>
+        <div class="category" data-key="officers">Officers</div>
+        <div class="category" data-key="councils">University Student Councils</div>
+        <div class="category" data-key="athletes">Athletes</div>
+      </div>
+
+      <div class="data-section">
+        <div class="activities-section" id="co-curricular">
+          <div class="section-header">Approved In-Campus/Off-Campus Co- & Extracurricular Activity Involvement</div>         
+        </div>
+
+        <div class="activities-section" id="community" style="display:none;">
+          <div class="section-header">In-Campus/Off-Campus Community Outreach & Socio-Civic Involvement</div>          
+        </div>
+
+        <div class="activities-section" id="creative" style="display:none;">
+          <div class="section-header">Participation Form for Approved In-Campus/Off-Campus Creative, Competitive, or Original Work in Arts, Science & Technology</div>         
+        </div>
+
+        <div class="activities-section" id="combined" style="display:none;">
+          <div class="section-header">Combined Performance in Curricular, Co-Curricular & Extracurricular Activities</div>   
+        </div>
+
+        <div class="activities-section" id="marshals" style="display:none;">
+          <div class="section-header">FORM FOR MARSHALS/ PEER FACILITATORS/ PEER TUTORS</div>
+        </div>
+
+        <div class="activities-section" id="officers" style="display:none;">
+          <div class="section-header">Form for Student Officers: Section, Year Level, Council, Org, Publication & COMELEC</div>
+        </div>
+
+        <div class="activities-section" id="councils" style="display:none;">
+          <div class="section-header">University Student Council Officers</div> 
+        </div>
+        
+        <div class="activities-section" id="athletes" style="display:none;">
+          <div class="section-header">Form for Athletes (School/College/Department/Varsity)</div>
+        </div>     
+
+        <div class="points">Total Score/ Points Earned: <span>0 Points</span></div>
+
+        <div class="button-group">
+          <button id="add-btn" class="action-btn btn-blue" title="Add"><i class="fas fa-plus"></i></button>
+          <button id="edit-activity-btn" class="action-btn btn-yellow" title="Edit Activity"><i class="fas fa-edit"></i></button>
+          <!-- <button class="action-btn btn-green" title="View"><i class="fas fa-eye"></i></button> -->
+          <button class="action-btn btn-red" title="Delete"><i class="fas fa-trash"></i></button>
+          <button class="action-btn btn-white" title="Print"><i class="fas fa-print"></i></button>
+        </div>
+
+        <div id="popupForm" style="display:none;" class="popup-form">
+          <div id="popupContent"></div>
+        </div>
+
+        <table id="main-table">
+          <thead>
+            <tr>
+              <th><input type="checkbox" id="select-all"></th>
+              <th>No.</th>
+              <th>Activity/Theme</th>
+              <th>Venue</th>
+              <th>Date</th>
+              <th>Evidence</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <!-- RATER and VALIDATOR content inside dashboard -->
+      <div id="rater-content" style="display: none;">
+        <h2>Rater Panel</h2>
+        <p>This section will display rating options in the future.</p>
+      </div>
+
+      <div id="validator-content" style="display: none;">
+        <h2>Validator Panel</h2>
+        <p>This section will handle activity validations in the future.</p>
+      </div>
+    </div>
+
+
+    <!-- Placeholder sections -->
+    <div class="main-section" id="rating-section" style="display: none;">
+      <h2>My Performance Submissions</h2>
+      <table id="performanceList" class="styled-table">
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Category</th>
+            <th>Activity</th>
+            <th>Venue</th>
+            <th>Date</th>
+            <th>Points</th>
+            <th>Status</th>
+            <th>Evidence</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Injected via JS -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 👇 Leave this award section as is -->
+    <div class="main-section" id="award-section" style="display: none;">
+      <h2 style="margin-bottom: 15px;">Awards Summary</h2>
+      <table id="awards-table" class="styled-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Activity Count</th>
+            <th>Total Points</th>
+            <th>Medal</th>
+            <th>Activities</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Filled by JS -->
+        </tbody>
+      </table>
+    </div>
+
+    <!--====================== Rater/Validator Confirmation ======================-->
+    <div class="main-section" id="confirmation-section" style="display: none;">
+      <h2 style="margin-bottom: 15px;">Rater/Validator Confirmation</h2>
+
+      <!-- 🔽 Dropdown Filter -->
+      <div class="confirmation-filter-bar" style="margin-bottom: 15px;">
+        <label for="categoryFilter" style="margin-right: 10px;">Filter by Category:</label>
+        <select id="categoryFilter" style="padding: 6px 12px; border-radius: 6px; border: 1px solid #ccc;">
+          <option value="all">All</option>
+          <option value="co-curricular">Co-curricular and Extracurricular</option>
+          <option value="community">Community Outreach and Socio Civic</option>
+          <option value="creative">Creative/Original Efforts</option>
+          <option value="combined">Combined Curricular/Co/Extra</option>
+          <option value="marshals">Marshals / Peer Facilitators</option>
+          <option value="officers">Officers</option>
+          <option value="councils">University Student Councils</option>
+          <option value="athletes">Athletes</option>
+        </select>
+      </div>
+
+      <!-- ✅ This is where your JavaScript injects the confirmation cards -->
+    <table id="confirmation-table" class="styled-table">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Date Submitted</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="confirmationList">
+        <!-- Rows will be dynamically injected here -->
+      </tbody>
+    </table>
+
+
+      <!-- 🔍 Popup for document details (keep your existing modal logic) -->
+      <div id="confirmationPopup" class="modal" style="display:none;">
+        <div class="modal-content">
+          <span class="close-btn" onclick="document.getElementById('confirmationPopup').style.display='none'">&times;</span>
+          <div id="confirmationDetails"></div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+  <!-- Modal for Evidence -->
+  <div id="evidenceModal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <div id="evidenceViewer"></div>
+    </div>
+  </div>
+
+  <style>
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      justify-content: center; align-items: center;
+    }
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 90%;
+      max-height: 90%;
+      overflow: auto;
+    }
+    .modal-content img, .modal-content iframe {
+      max-width: 100%;
+      max-height: 80vh;
+    }
+    .close-btn {
+      float: right;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+  </style>
+
+  <script src="dash.js"></script>
+
+<div id="editAccountModal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <h3>Change Profile</h3>
+    <form id="editAccountForm">
+      <label>Username
+        <input type="text" id="edit-username" name="username" required />
+      </label>
+      <label>New password (leave blank to keep current)
+        <input type="password" id="edit-password" name="password" />
+      </label>
+      <label>Confirm new password
+        <input type="password" id="edit-password-confirm" name="passwordConfirm" />
+      </label>
+      <div class="modal-actions">
+        <button type="button" id="edit-cancel">Cancel</button>
+        <button type="submit" id="edit-save">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
+</body>
+</html>

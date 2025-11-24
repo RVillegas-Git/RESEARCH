@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Affairs Merit System | Login & Signup</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="login.js" defer></script>
+</head>
+<body>
+
+  <div class="page-title">
+  <h1 class="system-title">Student Affairs Merit System</h1>
+  </div>
+
+  
+    <div class="container">
+      <div class="form-container">
+        
+        <!-- Tab Navigation -->
+        
+        <div class="tab-header">
+          <div id="tab-login" class="tab-btn active">Login</div>
+          <div id="tab-signup" class="tab-btn">Sign Up</div>
+        </div>
+
+      <!-- Login Form -->
+      <form id="login-form">
+        <div class="form-group">
+          <label for="login-username">Username</label>
+          <input type="text" id="login-username" name="username" required autocomplete="username" />
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required autocomplete="current-password" />
+        </div>
+
+        <button type="submit" class="submit-btn">Login</button>
+      </form>
+
+      <!-- Chatbot -->
+      <div class="outer-wrapper">
+        <div class="chatbot-container">
+          <iframe src="http://localhost/chatbot/"></iframe>
+        </div>
+
+      <!-- Signup Form -->
+      <form id="signup-form" style="display: none;">
+        <div class="form-group">
+          <label for="name">Name: <span class="required">*</span></label>
+          <input type="text" id="name" required />
+        </div>
+
+        <div class="form-group">
+          <label for="school">School/Department: <span class="required">*</span></label>
+          <select id="school" required>
+            <!-- Will be populated dynamically -->
+          </select>
+        </div>
+
+
+        <div class="form-row">
+          <div class="form-group half">
+            <label for="course">Course and Year: <span class="required">*</span></label>
+            <select id="course" required>
+              <option value="" disabled selected>Select a Program & Year</option>
+            </select>
+          </div>
+
+          <div class="form-group half">
+            <label for="school-year">School Year: <span class="required">*</span></label>
+            <select id="school-year" required>
+              <option value="" disabled selected>Selection</option>
+              <option value="2024-2025">2024-2025</option>
+              <option value="2025-2026">2025-2026</option>
+              <option value="2026-2027">2026-2027</option>
+              <option value="2027-2028">2027-2028</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="signup-username">Username: <span class="required">*</span></label>
+          <input type="text" id="signup-username" required />
+        </div>
+
+        <div class="form-group">
+          <label for="signup-password">Password: <span class="required">*</span></label>
+          <input type="password" id="signup-password" required />
+        </div>
+
+        <button type="submit" class="submit-btn">Register</button>
+      </form>
+
+    </div>
+  </div>
+</body>
+</html>
